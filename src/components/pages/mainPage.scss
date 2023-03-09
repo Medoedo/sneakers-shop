@@ -7,16 +7,31 @@
 }
 
 .search_panel {
-    width: 250px;
-    height: 45px;
+    display: flex;
+    align-items: center;
 
-    border: 1px solid #F3F3F3;
+    width: 250px;
+    // height: 45px;
+
+    padding: 0 0 0 15px;
+
+    border: 1px solid #EAEAEA;
     border-radius: 10px;
 
-    &::placeholder {
-        font-size: 14px;
-        color: #C4C4C4;
+    input {
+        width: 100%;
 
-        padding-left: 10px;
+        background-color: transparent;
+        margin-left: 15px;
+        padding: 14px 10px 14px 7px;
+
+        outline: none;
+        border: none;
+        border-left: 1px solid #EAEAEA;
+
+        &::placeholder {
+            font-size: 14px;
+            color: #C4C4C4;
+        }
     }
 }

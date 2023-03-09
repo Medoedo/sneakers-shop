@@ -1,4 +1,5 @@
 import Header from "../header/Header";
+import search from "../../resources/images/search-icon.svg"
 
 import "./mainPage.scss"
 
@@ -9,7 +10,10 @@ const MainPage = () => {
             <Header/>
             <div className="subHeader">
                 <h2 className="subHeader__title">All sneakers</h2>
-                <input placeholder="Search.." className="search_panel"></input>
+                <div className="search_panel">
+                    <img src={search} alt=""/>
+                    <input placeholder="Search..."/>
+                </div>
             </div>
 
         </>

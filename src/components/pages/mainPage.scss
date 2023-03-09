@@ -1,0 +1,22 @@
+.subHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 30px 0 30px 0;
+}
+
+.search_panel {
+    width: 250px;
+    height: 45px;
+
+    border: 1px solid #F3F3F3;
+    border-radius: 10px;
+
+    &::placeholder {
+        font-size: 14px;
+        color: #C4C4C4;
+
+        padding-left: 10px;
+    }
+}

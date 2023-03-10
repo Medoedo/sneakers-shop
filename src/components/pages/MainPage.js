@@ -1,4 +1,5 @@
 import Header from "../header/Header";
+import CardItem from "../cards/CardItem";
 import search from "../../resources/images/search-icon.svg"
 
 import "./mainPage.scss"
@@ -15,7 +16,7 @@ const MainPage = () => {
                     <input placeholder="Search..."/>
                 </div>
             </div>
-
+            <CardItem/>
         </>
     )
 }

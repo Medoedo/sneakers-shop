@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 210px;
+    height: 260px;
+
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    &__favBut {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 32px;
+        height: 32px;
+
+        background-color: #FEF0F0;
+        border-radius: 7px;
+    }
+    &__priceBlock {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+}

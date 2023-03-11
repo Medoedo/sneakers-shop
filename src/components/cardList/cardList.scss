@@ -1,10 +1,9 @@
 .store {
     display: flex;
 
+    padding: 30px 0;
+
     flex-wrap: wrap;
-
-    padding-bottom: 20px;
-
     row-gap: 40px;
     column-gap: 40px;
 }

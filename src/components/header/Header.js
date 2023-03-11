@@ -1,7 +1,7 @@
 import "./header.scss"
 
 import cart from "../../resources/images/header/cart.svg"
-import favorite from "../../resources/images/header/favorite.svg"
+import favourite from "../../resources/images/header/favourite.svg"
 import userIcon from "../../resources/images/header/user.svg"
 import icon from "../../resources/images/header/favicon.ico"
 
@@ -25,7 +25,7 @@ const Header = () => {
                         <p id="price">0$</p>
                     </div>
                     <div className="header__item">
-                        <img src={favorite} alt=""/>
+                        <img src={favourite} alt=""/>
                     </div>
                     <div className="header__item">
                         <img src={userIcon} alt=""/>

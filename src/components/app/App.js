@@ -1,6 +1,6 @@
 import React from 'react';
 // import MainPage from '../pages/MainPage';
-import { MainPage, ShopPage } from '../pages';
+import { MainPage, ShopPage, FavouriteItemsPage } from '../pages';
 import './app.scss';
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
 		<div className="App">
 			<div className="container">
 				{/* <MainPage /> */}
-				<ShopPage/>
+				{/* <ShopPage/> */}
+				<FavouriteItemsPage/>
 			</div>
 		</div>
 	);

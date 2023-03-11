@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-const cardSkeleton = ({ cards }) => {
+const CardSkeleton = ({ cards }) => {
     return (
         Array(cards).fill(0).map((_, i) =>
             <div key={i} className="card jc-center">
@@ -21,4 +21,4 @@ const cardSkeleton = ({ cards }) => {
     )
 }
 
-export default cardSkeleton;
+export default CardSkeleton;

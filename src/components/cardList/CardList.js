@@ -1,5 +1,5 @@
 import CardItem from "../cards/CardItem";
-import CardSkeleton from "../skeleton/cardSkeleton";
+import CardSkeleton from "../skeleton/CardSkeleton";
 import "./cardList.scss"
 
 const CardList = () => {

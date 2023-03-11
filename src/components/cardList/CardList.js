@@ -6,7 +6,9 @@ const CardList = () => {
 
     return (
         <div className="store">
-            <CardSkeleton cards={8}/>
+            {/* <CardSkeleton cards={4}/> */}
+            <CardItem/>
+            <CardItem/>
             <CardItem/>
             <CardItem/>
             <CardItem/>

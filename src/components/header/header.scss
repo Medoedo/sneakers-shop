@@ -40,10 +40,14 @@
     &__item {
         display: flex;
         align-items: center;
+        span {
+            display: block;
+            width: 21px;
+            height: 21px; 
 
-        img {
-            width: 30px;
-            height: 30px;
+            background-image: url("../../resources/images/header/favourite.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
         }
         p {
             padding-left: 10px;

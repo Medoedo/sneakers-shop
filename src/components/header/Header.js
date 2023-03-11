@@ -1,5 +1,6 @@
 import "./header.scss"
 
+import { Link, NavLink } from "react-router-dom"
 import cart from "../../resources/images/header/cart.svg"
 import favourite from "../../resources/images/header/favourite.svg"
 import userIcon from "../../resources/images/header/user.svg"
@@ -12,25 +13,35 @@ const Header = () => {
             <div className="header__body">
                 <div className="header__logo">
                     <div className="header__icon">
-                        <img src={icon} alt=""/>
+                        <Link to="/">
+                            <img src={icon} alt=""/>
+                        </Link>
                     </div>
                     <div className="header__text">
                         <h2>My Sneakers</h2>
                         <p>Shop of the best sneakers</p>
                     </div>
                 </div>
-                <div className="header__nav">
-                    <div className="header__item basket">
+                <ul className="header__nav">
+                    <li className="header__item basket">
                         <img src={cart} alt=""/>
                         <p id="price">0$</p>
-                    </div>
-                    <div className="header__item">
-                        <img src={favourite} alt=""/>
-                    </div>
-                    <div className="header__item">
-                        <img src={userIcon} alt=""/>
-                    </div>
-                </div>
+                    </li>
+                    <li className="header__item">
+                        <NavLink 
+                            to="/favorite"
+                            style={{ 
+                                backgroundImage: `url("../../resources/images/header/favourite-active.svg")` 
+                              }}>
+                            <span/>
+                        </NavLink>
+                    </li>
+                    <li className="header__item">
+                        <Link to="/shop">
+                            <img src={userIcon} alt=""/>
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </header>
     )

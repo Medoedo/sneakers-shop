@@ -1,9 +1,13 @@
 .App {
-    margin: 0 10% 0 10%;
+    margin: 0 auto;
+    max-width: 1080px;
+    min-height: 90vh;
 }
 
 .container {
     padding: 50px 50px 0 50px;
+    margin: 50px 0;
+
     background-color: white;
 
     border-radius: 30px;

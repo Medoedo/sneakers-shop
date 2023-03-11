@@ -1,21 +1,27 @@
 import "./cardItem.scss"
-import favorite from "../../resources/images/card/favorite-active.svg"
+import favoriteActive from "../../resources/images/card/favorite-active.svg"
+import favorite from "../../resources/images/card/favorite.svg"
+import sneakers from "../../resources/images/card/sneakers.svg"
+import plusIcon from "../../resources/images/card/plus.svg"
 
 const CardItem = () => {
 
     return (
         <div className="card">
-            <div className="card__favBut">
+            {/* card__favBut-active */}
+            <div className="card__favBut ">
                 <img src={favorite} alt=""/>
             </div>
-            <img className="card__image" alt=""/>
-            <h2 className="card__title">Title</h2>
+            <img src={sneakers} className="card__image" alt=""/>
+            <p className="card__title">Nike Blazer Mid Suede Men's Sneakers</p>
             <div className="card__priceBlock">
                 <div>
-                    <span>Price</span>
+                    <span>Price:</span>
                     <p>30$</p>
                 </div>
-                <button className="card__cartBut"></button>
+                <button className="card__cartBut">
+                    <img src={plusIcon} alt="add to cart btn"/>
+                </button>
             </div>
         </div>
     )

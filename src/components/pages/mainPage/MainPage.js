@@ -1,7 +1,7 @@
-import Header from "../header/Header";
-import CardList from "../cardList/CardList";
+import Header from "../../header/Header";
+import CardList from "../../cardList/CardList";
 
-import search from "../../resources/images/search-icon.svg"
+import search from "../../../resources/images/search-icon.svg"
 
 import "./mainPage.scss"
 

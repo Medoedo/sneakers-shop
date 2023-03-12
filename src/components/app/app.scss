@@ -13,6 +13,26 @@
     border-radius: 30px;
 }
 
+.goBackBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 200px;
+    height: 55px;
+
+    background: #9DD458;
+    border-radius: 18px;
+    border: none;
+
+    color: white;
+    text-decoration: none;
+
+    img {
+        margin-right: 10px;
+    }
+}
+
 .jc-center {
     justify-content: center;
 }

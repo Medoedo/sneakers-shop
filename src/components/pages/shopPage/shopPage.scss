@@ -1,0 +1,28 @@
+.hereNothing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    height: 60vh;
+    width: 100%;
+    &__sticker {
+        width: 70px;
+        height: 70px;
+    }
+    &__title {
+        margin: 24px 0 11px 0;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #000000;
+
+        opacity: 0.4;
+
+        margin-bottom: 70px;
+    }
+}

@@ -2,8 +2,11 @@ import "./header.scss"
 
 import { Link, NavLink } from "react-router-dom"
 import cart from "../../resources/images/header/cart.svg"
+// import cartActive from "../../resources/images/header/cart-active.svg"
 import favourite from "../../resources/images/header/favourite.svg"
+import favouriteActive from "../../resources/images/header/favourite-active.svg"
 import userIcon from "../../resources/images/header/user.svg"
+import userIconActive from "../../resources/images/header/user-active.svg"
 import icon from "../../resources/images/header/favicon.ico"
 
 const Header = () => {
@@ -30,16 +33,25 @@ const Header = () => {
                     <li className="header__item">
                         <NavLink 
                             to="/favorite"
-                            style={{ 
-                                backgroundImage: `url("../../resources/images/header/favourite-active.svg")` 
-                              }}>
-                            <span/>
+                            className="header__item_fav"
+                            style={({isActive}) => {
+                                return {
+                                    backgroundImage: isActive ? `url(${favouriteActive})` : `url(${favourite})`
+                                }
+                            }}
+                            >
                         </NavLink>
                     </li>
                     <li className="header__item">
-                        <Link to="/shop">
-                            <img src={userIcon} alt=""/>
-                        </Link>
+                        <NavLink 
+                            to="/shop"
+                            style={({isActive}) => {
+                                return {
+                                    backgroundImage: isActive ? `url(${userIconActive})` : `url(${userIcon})`
+                                }
+                            }}
+                        >
+                        </NavLink>
                     </li>
                 </ul>
             </div>

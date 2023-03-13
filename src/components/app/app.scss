@@ -2,6 +2,8 @@
     margin: 0 auto;
     max-width: 1080px;
     min-height: 90vh;
+
+    overflow: hidden;
 }
 
 .container {
@@ -35,6 +37,19 @@
 
 button {
     cursor: pointer;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 32px;
+    height: 32px;
+
+    background: transparent;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
 }
 
 .jc-center {

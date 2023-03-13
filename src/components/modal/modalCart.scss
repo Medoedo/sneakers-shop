@@ -1,0 +1,51 @@
+.modalCart {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,.5);
+
+    &__container {
+        width: 385px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        overflow: hidden;
+        
+    }
+    &__content {
+        position: relative;
+        // width: 100%;
+        height: 100%;
+        padding: 30px;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 4px;
+    }
+    &__title {
+        margin-bottom: 30px;
+    }
+    &-show {
+        display: block;
+    }
+}
+
+.modalSize {
+    width: 100%;
+    height: 100%;
+
+    &__image {
+        width: 120px;
+        height: 120px;
+    }
+    &__text {
+        margin-bottom: 30px;
+    }
+}

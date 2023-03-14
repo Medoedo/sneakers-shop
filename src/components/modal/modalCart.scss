@@ -29,8 +29,17 @@
         border: 1px solid rgba(0,0,0,.2);
         border-radius: 4px;
     }
-    &__title {
+    &__header {
+        display: flex;
+        align-items: center;
+
         margin-bottom: 30px;
+    }
+    &__title {
+        margin: 0 0 2px 20px;
+    }
+    &__item {
+        margin-bottom: 20px;
     }
     &-show {
         display: block;

@@ -6,7 +6,6 @@ import {store} from "../../../store/store"
 
 import CardItem from "../../cards/CardItem";
 import Header from "../../header/Header";
-import CardSkeleton from "../../skeleton/CardSkeleton";
 
 import arrowLeft from "../../../resources/images/arrow-left.svg"
 import smile from "../../../resources/images/stiker-for-fav.png"
@@ -21,12 +20,13 @@ const ShopPage = () => {
 
     useEffect(() => {
         dispatch(sneakersFetch());
-    
+    // eslint-disable-next-line
     }, []);
 
     const renderCards = (data) => {
         if (data.length === 0) return data
 
+        // eslint-disable-next-line
         const cards = data.map(({ id, ...props }) => {
             if (props.inCart === true) {
                 return <CardItem

@@ -18,12 +18,13 @@ const FavouriteItemsPage = () => {
 
     useEffect(() => {
         dispatch(sneakersFetch());
-    
+        // eslint-disable-next-line
     }, []);
 
     const renderCards = (data) => {
         if (data.length === 0) return data
 
+        // eslint-disable-next-line
         const cards = data.map(({ id, ...props }) => {
             if (props.favorite === true) {
                 return <CardItem

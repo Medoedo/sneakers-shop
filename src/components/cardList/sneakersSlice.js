@@ -5,7 +5,8 @@ const sneakersAdapter = createEntityAdapter()
 
 const initialState = sneakersAdapter.getInitialState({
     filteredSneakers: [],
-    sneakersLoadingStatus: "idle"
+    sneakersLoadingStatus: "idle",
+    showModal: false
 })
 
 export const sneakersFetch = createAsyncThunk(
@@ -21,7 +22,10 @@ const sneakersSlice = createSlice({
     initialState,
     reducers: {
         toggleFavorite: sneakersAdapter.updateOne,
-        toggleCart: sneakersAdapter.updateOne
+        toggleCart: sneakersAdapter.updateOne,
+        toggleModal(state) {
+            state.showModal = !state.showModal;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -39,5 +43,5 @@ export const {selectAll} = sneakersAdapter.getSelectors(state => state.sneakers)
 
 const {reducer, actions} = sneakersSlice;
 
-export const {toggleFavorite, toggleCart, sneakersFetched, sneakersError} = actions;
+export const {toggleFavorite, toggleCart, toggleModal, sneakersFetched } = actions;
 export default reducer;

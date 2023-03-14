@@ -1,31 +1,34 @@
 {
     "sneakers": [
         {
-            "id": "1",
+            "id": 1,
             "name": "Nike Blazer Mid Suede Men's Sneakers",
             "price": "90",
-            "src": "resources/images/sneakers/nike-blazer-mid-suede.svg",
+            "src": "./sneakers/nike-blazer-mid-suede.svg",
             "favorite": false,
             "inCart": false
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Nike Air Max 270 Men's Sneakers",
             "price": "100",
+            "src": "./sneakers/nike-air-max-270.jpg",
             "favorite": false,
             "inCart": false
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "Under Armour Curry 8 Men's Sneakers",
             "price": "210",
+            "src": "./sneakers/under-armour-curry-8.jpg",
             "favorite": false,
             "inCart": false
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "Jordan Air Jordan 11 Men's Sneakers",
             "price": "250",
+            "src": "./sneakers/jordan-air-jordan-11.jpg",
             "favorite": false,
             "inCart": false
         }

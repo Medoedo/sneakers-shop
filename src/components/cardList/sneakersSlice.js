@@ -9,7 +9,7 @@ const initialState = sneakersAdapter.getInitialState({
 })
 
 export const sneakersFetch = createAsyncThunk(
-    "sneakers",
+    "sneakers/Fetch",
     () => {
         const {request} = useHttp()
         return request("http://localhost:3001/sneakers");

@@ -13,8 +13,8 @@ const ModalCart = () => {
             <div className="modalCart__container">
                 <div className="modalCart__content">
                     <h3 className="modalCart__title">Cart</h3>
-                    {/* <EmptyCart/> */}
-                    <CartItem/>
+                    <EmptyCart/>
+                    {/* <CartItem/> */}
                 </div>
             </div>
         </div>

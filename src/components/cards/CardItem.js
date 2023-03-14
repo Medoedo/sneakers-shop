@@ -7,10 +7,13 @@ import addedIcon from "../../resources/images/card/added-icon.svg"
 import { useDispatch } from "react-redux"
 import { toggleCart, toggleFavorite } from "../cardList/sneakersSlice"
 
+import { useHttp } from "../../hook/http.hook"
+
 const CardItem = (props) => {
     const { id, name, price, src, favorite, inCart } = props;
 
     const dispatch = useDispatch();
+    const { request } = useHttp()
 
     let favoriteClass = "card__favBut";
     let favoriteIcon = favourite;
@@ -28,10 +31,39 @@ const CardItem = (props) => {
         cartIcon = addedIcon;
     }
 
+    const onToggleCart = () => {
+        const sneakers = {
+            id: id,
+            name: name,
+            price: price,
+            src: src,
+            favorite: favorite,
+            inCart: !inCart
+        }
+        // console.log(JSON.stringify(sneakers))
+
+        dispatch(toggleCart({ id: id, changes: { inCart: !inCart } }));
+        request(`http://localhost:3001/sneakers/${id}`, "PUT", JSON.stringify(sneakers))
+    }
+
+    const onToggleFavorite = () => {
+        const sneakers = {
+            id: id,
+            name: name,
+            price: price,
+            src: src,
+            favorite: !favorite,
+            inCart: inCart
+        }
+
+        dispatch(toggleFavorite({ id: id, changes: { favorite: !favorite } }));
+        request(`http://localhost:3001/sneakers/${id}`, "PUT", JSON.stringify(sneakers))
+    }
+
     return (
         <div className="card">
             <button
-                onClick={() => dispatch(toggleFavorite({ id: id, changes: { favorite: !favorite } }))}
+                onClick={onToggleFavorite}
                 className={favoriteClass}
             >
                 <img src={favoriteIcon} alt="" />
@@ -44,7 +76,7 @@ const CardItem = (props) => {
                     <p>{price}$</p>
                 </div>
                 <button
-                    onClick={() => dispatch(toggleCart({ id: id, changes: { inCart: !inCart } }))}
+                    onClick={onToggleCart}
                     className={cartClass}
                 >
                     <img src={cartIcon} alt="add to cart btn" />

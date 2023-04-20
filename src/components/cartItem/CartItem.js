@@ -1,13 +1,18 @@
 import { useDispatch } from "react-redux"
 import { useHttp } from "../../hook/http.hook"
-import { toggleCart } from "../cardList/sneakersSlice"
+import { toggleCart, cartSum } from "../cardList/sneakersSlice"
+import {changeSum, selectAll} from "../header/cartSlice"
+
+import {store} from "../../store/store"
 
 import deleteCross from "../../resources/images/card/plus.svg"
 import "./cartItem.scss"
 
 const CartItems = ({ name, price, src, inCart, id, favorite }) => {
-    const {request} =useHttp();
+    const {request} = useHttp();
     const dispatch = useDispatch();
+
+    const cart = selectAll(store.getState())
 
     const onToggleCart = () => {
         const sneakers = {
@@ -18,8 +23,20 @@ const CartItems = ({ name, price, src, inCart, id, favorite }) => {
             favorite,
             inCart: !inCart
         }
-        // console.log("del")
 
+        if(cart[0] !== undefined) {
+            if(!inCart) {
+                let newSum = +cart[0].sum + +price;
+                dispatch(changeSum({id: 1, changes: {sum: newSum}}))
+                request("http://localhost:3001/cart/1", "PUT", JSON.stringify({id: 1, sum: newSum}))
+            } else if(cart[0].sum !== 0) {
+                let newSum = +cart[0].sum - +price;
+                dispatch(changeSum({id: 1, changes: {sum: newSum}}))
+                request("http://localhost:3001/cart/1", "PUT", JSON.stringify({id: 1, sum: newSum}))
+            }
+        }
+
+        dispatch(cartSum({inCart: !inCart, price: +price}))
         dispatch(toggleCart({ id: id, changes: { inCart: !inCart } }));
         request(`http://localhost:3001/sneakers/${id}`, "PUT", JSON.stringify(sneakers))
     }
@@ -32,8 +49,8 @@ const CartItems = ({ name, price, src, inCart, id, favorite }) => {
                     <p className="cartItem__title">{name}</p>
                     <p className="cartItem__price">{price}$</p>
                 </div>
-                <button className="btn cartItem__deleteBtn">
-                    <img onClick={() => onToggleCart()} src={deleteCross} alt="" />
+                <button onClick={() => onToggleCart()} className="btn cartItem__deleteBtn">
+                    <img src={deleteCross} alt="" />
                 </button>
             </div>
         </div>

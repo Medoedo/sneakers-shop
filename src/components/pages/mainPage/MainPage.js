@@ -28,7 +28,7 @@ const MainPage = () => {
     )
 }
 
-const LeftArrow = ({onClick, className, style}) => {
+const LeftArrow = ({onClick, className}) => {
     return (
         <div
             className={className}
@@ -38,7 +38,7 @@ const LeftArrow = ({onClick, className, style}) => {
     )
 }
 
-const RigthArrow = ({onClick, className, style}) => {
+const RigthArrow = ({onClick, className}) => {
     return (
         <div
             className={className}

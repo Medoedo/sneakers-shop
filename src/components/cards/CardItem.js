@@ -6,6 +6,9 @@ import addedIcon from "../../resources/images/card/added-icon.svg"
 
 import { useDispatch } from "react-redux"
 import { toggleCart, toggleFavorite } from "../cardList/sneakersSlice"
+import {changeSum, selectAll} from "../header/cartSlice"
+
+import {store} from "../../store/store"
 
 import { useHttp } from "../../hook/http.hook"
 
@@ -14,6 +17,8 @@ const CardItem = (props) => {
 
     const dispatch = useDispatch();
     const { request } = useHttp()
+
+    const cart = selectAll(store.getState())
 
     let favoriteClass = "card__favBut";
     let favoriteIcon = favourite;
@@ -40,9 +45,20 @@ const CardItem = (props) => {
             favorite: favorite,
             inCart: !inCart
         }
-        // console.log(JSON.stringify(sneakers))
 
-        dispatch(toggleCart({ id: id, changes: { inCart: !inCart } }));
+        if(cart[0] !== undefined) {
+            if(!inCart) {
+                let newSum = +cart[0].sum + +price;
+                dispatch(changeSum({id: 1, changes: {sum: newSum}}))
+                request("http://localhost:3001/cart/1", "PUT", JSON.stringify({id: 1, sum: newSum}))
+            } else if(cart[0].sum !== 0) {
+                let newSum = +cart[0].sum - +price;
+                dispatch(changeSum({id: 1, changes: {sum: newSum}}))
+                request("http://localhost:3001/cart/1", "PUT", JSON.stringify({id: 1, sum: newSum}))
+            }
+        }
+
+        dispatch(toggleCart({ id: id, changes: { inCart: !inCart }}));
         request(`http://localhost:3001/sneakers/${id}`, "PUT", JSON.stringify(sneakers))
     }
 

@@ -1,8 +1,12 @@
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { toggleModal } from "../cardList/sneakersSlice"
 import { Link, NavLink } from "react-router-dom"
 
-import cart from "../../resources/images/header/cart.svg"
+import {selectAll, cartFetch} from "./cartSlice"
+import {store} from "../../store/store"
+
+import cartImg from "../../resources/images/header/cart.svg"
 import cartActive from "../../resources/images/header/cart-active.svg"
 import favourite from "../../resources/images/header/favourite.svg"
 import favouriteActive from "../../resources/images/header/favourite-active.svg"
@@ -14,7 +18,13 @@ import "./header.scss"
 
 const Header = () => {
     const {showModal} = useSelector(state => state.sneakers);
+    const cart = selectAll(store.getState())
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(cartFetch())
+
+    }, [])
 
     return (
         <>
@@ -33,8 +43,8 @@ const Header = () => {
                     </div>
                     <ul className="header__nav">
                         <li onClick={() => dispatch(toggleModal())} className="header__item basket">
-                            <img src={showModal ? cartActive : cart} alt="" />
-                            <p id="price">0$</p>
+                            <img src={showModal ? cartActive : cartImg} alt="" />
+                            <p id="price">{cart[0] ? cart[0].sum : 0}$</p>
                         </li>
                         <li className="header__item">
                             <NavLink

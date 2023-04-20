@@ -27,7 +27,6 @@ const CardList = () => {
                 key={id}
                 id={id}
                 {...props}
-
                 />
         })
     }

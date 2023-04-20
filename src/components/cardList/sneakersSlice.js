@@ -5,6 +5,7 @@ const sneakersAdapter = createEntityAdapter()
 
 const initialState = sneakersAdapter.getInitialState({
     filteredSneakers: [],
+    cartSum: 0,
     sneakersLoadingStatus: "idle",
     showModal: false
 })
@@ -43,5 +44,5 @@ export const {selectAll} = sneakersAdapter.getSelectors(state => state.sneakers)
 
 const {reducer, actions} = sneakersSlice;
 
-export const {toggleFavorite, toggleCart, toggleModal, sneakersFetched } = actions;
+export const {toggleFavorite, toggleCart, toggleModal } = actions;
 export default reducer;

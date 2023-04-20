@@ -27,11 +27,13 @@ const FavouriteItemsPage = () => {
         // eslint-disable-next-line
         const cards = data.map(({ id, ...props }) => {
             if (props.favorite === true) {
-                return <CardItem
-                key={id}
-                id={id}
-                {...props}
-                />
+                return (
+                    <CardItem
+                        key={id}
+                        id={id}
+                        {...props}
+                    />
+                )
             }
         })
 

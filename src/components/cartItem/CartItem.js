@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { useHttp } from "../../hook/http.hook"
-import { toggleCart, cartSum } from "../cardList/sneakersSlice"
+import { toggleCart } from "../cardList/sneakersSlice"
 import {changeSum, selectAll} from "../header/cartSlice"
 
 import {store} from "../../store/store"
@@ -36,7 +36,6 @@ const CartItems = ({ name, price, src, inCart, id, favorite }) => {
             }
         }
 
-        dispatch(cartSum({inCart: !inCart, price: +price}))
         dispatch(toggleCart({ id: id, changes: { inCart: !inCart } }));
         request(`http://localhost:3001/sneakers/${id}`, "PUT", JSON.stringify(sneakers))
     }

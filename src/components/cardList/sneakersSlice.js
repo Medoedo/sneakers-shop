@@ -4,8 +4,7 @@ import { useHttp } from "../../hook/http.hook";
 const sneakersAdapter = createEntityAdapter()
 
 const initialState = sneakersAdapter.getInitialState({
-    filteredSneakers: [],
-    cartSum: 0,
+    searchTerm: "",
     sneakersLoadingStatus: "idle",
     showModal: false
 })
@@ -13,7 +12,7 @@ const initialState = sneakersAdapter.getInitialState({
 export const sneakersFetch = createAsyncThunk(
     "sneakers/Fetch",
     () => {
-        const {request} = useHttp()
+        const { request } = useHttp()
         return request("http://localhost:3001/sneakers");
     }
 )
@@ -26,23 +25,27 @@ const sneakersSlice = createSlice({
         toggleCart: sneakersAdapter.updateOne,
         toggleModal(state) {
             state.showModal = !state.showModal;
+        },
+        onSearchInput(state, action) {
+            state.searchTerm = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(sneakersFetch.pending, (state) => {state.sneakersLoadingStatus = "loading"})
+            .addCase(sneakersFetch.pending, (state) => { state.sneakersLoadingStatus = "loading" })
             .addCase(sneakersFetch.fulfilled, (state, action) => {
                 state.sneakersLoadingStatus = "idle";
+                state.filteredSneakers = action.payload;
                 sneakersAdapter.setAll(state, action.payload)
             })
-            .addCase(sneakersFetch.rejected, (state) => {state.sneakersLoadingStatus = "error"})
-            .addDefaultCase(() => {})
+            .addCase(sneakersFetch.rejected, (state) => { state.sneakersLoadingStatus = "error" })
+            .addDefaultCase(() => { })
     }
 })
 
-export const {selectAll} = sneakersAdapter.getSelectors(state => state.sneakers);
+export const { selectAll } = sneakersAdapter.getSelectors(state => state.sneakers);
 
-const {reducer, actions} = sneakersSlice;
+const { reducer, actions } = sneakersSlice;
 
-export const {toggleFavorite, toggleCart, toggleModal } = actions;
+export const { toggleFavorite, toggleCart, toggleModal, onSearchInput } = actions;
 export default reducer;

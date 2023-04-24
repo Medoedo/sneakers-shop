@@ -6,44 +6,61 @@ import search from "../../../resources/images/search-icon.svg"
 import leftArrow from "../../../resources/images/arrow-left.svg"
 import slideImg from "../../../resources/images/slider/Slide.png"
 
-import "./slick.scss"; 
+import { useState, useEffect } from "react";
+import { onSearchInput } from "../../cardList/sneakersSlice"
+import { useDispatch } from "react-redux";
+
+import "./slick.scss";
 import "./slick-theme.scss";
 import "./mainPage.scss"
 
 const MainPage = () => {
+    const [inputTerm, setInputTerm] = useState("");
+    const dispatch = useDispatch();
 
-    return ( 
+    const onInput = (inputValue) => {
+        setInputTerm(inputValue)
+    }
+
+    useEffect(() => {
+        dispatch(onSearchInput(inputTerm))
+    }, [inputTerm])
+
+    return (
         <>
-            <Header/>
-            <MainSlider/>
+            <Header />
+            <MainSlider />
             <div className="subHeader">
                 <h2 className="subHeader__title">All sneakers</h2>
                 <div className="search_panel">
-                    <img src={search} alt=""/>
-                    <input placeholder="Search..."/>
+                    <img src={search} alt="" />
+                    <input
+                        placeholder="Search..."
+                        value={inputTerm}
+                        onChange={(e) => onInput(e.target.value)} />
                 </div>
             </div>
-            <CardList/>
+            <CardList />
         </>
     )
 }
 
-const LeftArrow = ({onClick, className}) => {
+const LeftArrow = ({ onClick, className }) => {
     return (
         <div
             className={className}
             onClick={onClick}>
-            <img src={leftArrow} alt="arrow"/>
+            <img src={leftArrow} alt="arrow" />
         </div>
     )
 }
 
-const RigthArrow = ({onClick, className}) => {
+const RigthArrow = ({ onClick, className }) => {
     return (
         <div
             className={className}
             onClick={onClick}>
-                <img src={leftArrow} alt="arrow" style={{transform: "translate(-50%, -50%) rotate(180deg)"}}/>
+            <img src={leftArrow} alt="arrow" style={{ transform: "translate(-50%, -50%) rotate(180deg)" }} />
         </div>
     )
 }
@@ -62,13 +79,13 @@ const MainSlider = () => {
         <div >
             <Slider {...settings}>
                 <div className="slide">
-                    <img src={slideImg} alt="slide"/>
+                    <img src={slideImg} alt="slide" />
                 </div>
                 <div className="slide">
-                    <img src={slideImg} alt="slide"/>
+                    <img src={slideImg} alt="slide" />
                 </div>
                 <div className="slide">
-                    <img src={slideImg} alt="slide"/>
+                    <img src={slideImg} alt="slide" />
                 </div>
             </Slider>
         </div>
